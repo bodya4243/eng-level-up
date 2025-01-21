@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-question-table
+      author: bodya4243
+      changes:
+        - createTable:
+            tableName: question
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: question
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: correct_answer
+                  type: integer
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: question_options
+            columns:
+              - column:
+                  name: question_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_question_options_question
+                    references: question(id)
+              - column:
+                  name: option
+                  type: varchar(255)
+                  constraints:
+                    nullable: false

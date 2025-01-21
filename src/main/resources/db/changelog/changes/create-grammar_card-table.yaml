@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: "1"
+      author: "bodya4243"
+      changes:
+        - createTable:
+            tableName: "grammar_cards"
+            columns:
+              - column:
+                  name: "id"
+                  type: "BIGINT"
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    autoIncrement: true
+              - column:
+                  name: "level"
+                  type: "VARCHAR(255)"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "title"
+                  type: "VARCHAR(255)"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "description"
+                  type: "TEXT"
+                  constraints:
+                    nullable: false

@@ -1,0 +1,42 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-quiz-table
+      author: bodya4243
+      changes:
+        - createTable:
+            tableName: quiz
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: title
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: focus
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: quiz_questions
+            columns:
+              - column:
+                  name: quiz_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_quiz_questions_quiz
+                    references: quiz(id)
+              - column:
+                  name: question_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_quiz_questions_question
+                    references: question(id)
