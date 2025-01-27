@@ -4,17 +4,17 @@ databaseChangeLog:
       author: "bodya4243"
       changes:
         - createTable:
-            tableName: "card_content"
+            tableName: card_content
             columns:
               - column:
-                  name: "id"
-                  type: "BIGINT"
+                  name: id
+                  type: bigint
+                  autoIncrement: true
                   constraints:
                     primaryKey: true
                     nullable: false
-                    autoIncrement: true
               - column:
-                  name: "grammar_cards_id"
+                  name: "grammar_card_id"
                   type: "BIGINT"
                   constraints:
                     nullable: false
@@ -35,7 +35,7 @@ databaseChangeLog:
                     nullable: false
         - addForeignKeyConstraint:
             baseTableName: card_content
-            baseColumnNames: grammar_cards_id
+            baseColumnNames: grammar_card_id
             constraintName: FK_card_content_grammar_cards
             referencedTableName: grammar_cards
             referencedColumnNames: id

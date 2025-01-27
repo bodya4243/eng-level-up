@@ -1,11 +1,14 @@
 package com.example.englevelup.model.grammarcard;
 
 import com.example.englevelup.model.EnglishLevel;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -33,6 +36,7 @@ public class GrammarCard {
     @Column(nullable = false)
     private String description;
 
-    @OneToMany(mappedBy = "grammarCard", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "grammarCard")
+    @JsonManagedReference
     private List<GrammarCardContent> content;
 }

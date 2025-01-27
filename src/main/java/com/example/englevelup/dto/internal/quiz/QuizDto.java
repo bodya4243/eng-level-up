@@ -1,6 +1,6 @@
 package com.example.englevelup.dto.internal.quiz;
 
-import com.example.englevelup.model.Question;
+import com.example.englevelup.model.quiz.Question;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;

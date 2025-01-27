@@ -4,15 +4,19 @@ databaseChangeLog:
   - include:
       file: db/changelog/changes/create-essay-table.yaml
   - include:
+      file: db/changelog/changes/create-users-table.yaml
+  - include:
+      file: db/changelog/changes/create-users_roles-table.yaml
+  - include:
       file: db/changelog/changes/create-grammar_card-table.yaml
   - include:
       file: db/changelog/changes/create-card_content-table.yaml
   - include:
       file: db/changelog/changes/create-listening-table.yaml
   - include:
-      file: db/changelog/changes/create-question-table.yaml
-  - include:
       file: db/changelog/changes/create-quiz-table.yaml
+  - include:
+      file: db/changelog/changes/create-question-table.yaml
   - include:
       file: db/changelog/changes/create-reading-table.yaml
   - include:

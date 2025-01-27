@@ -1,5 +1,6 @@
-package com.example.englevelup.model;
+package com.example.englevelup.model.quiz;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,6 +27,7 @@ public class Quiz {
     @Column(nullable = false)
     private String focus;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "quiz")
+    @JsonManagedReference
     private List<Question> questions;
 }

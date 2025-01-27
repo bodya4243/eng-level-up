@@ -14,6 +14,11 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
+                  name: quiz_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
                   name: question
                   type: text
                   constraints:
@@ -23,6 +28,17 @@ databaseChangeLog:
                   type: integer
                   constraints:
                     nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: question
+            baseColumnNames: quiz_id
+            constraintName: FK_question_quiz
+            referencedTableName: quiz
+            referencedColumnNames: id
+
+  - changeSet:
+      id: create-question-options-table
+      author: bodya4243
+      changes:
         - createTable:
             tableName: question_options
             columns:
@@ -31,10 +47,12 @@ databaseChangeLog:
                   type: bigint
                   constraints:
                     nullable: false
-                    foreignKeyName: fk_question_options_question
+                    foreignKeyName: FK_question_options_question
                     references: question(id)
               - column:
-                  name: option
+                  name: option_text
                   type: varchar(255)
                   constraints:
                     nullable: false
+              - primaryKey:
+                  columns: question_id, option_text

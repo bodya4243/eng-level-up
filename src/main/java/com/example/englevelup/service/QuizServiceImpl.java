@@ -2,7 +2,7 @@ package com.example.englevelup.service;
 
 import com.example.englevelup.dto.internal.quiz.QuizDto;
 import com.example.englevelup.mapper.QuizMapper;
-import com.example.englevelup.model.Quiz;
+import com.example.englevelup.model.quiz.Quiz;
 import com.example.englevelup.repository.QuizRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,6 +21,9 @@ public class QuizServiceImpl implements QuizService {
     @Override
     public QuizDto addQuiz(QuizDto quizDto) {
         Quiz quiz = quizMapper.toModel(quizDto);
+
+        quizDto.getQuestions().forEach(question -> question.setQuiz(quiz));
+
         return quizMapper.toDto(quizRepository.save(quiz));
     }
 }

@@ -1,6 +1,6 @@
 package com.example.englevelup.repository;
 
-import com.example.englevelup.model.Quiz;
+import com.example.englevelup.model.quiz.Quiz;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

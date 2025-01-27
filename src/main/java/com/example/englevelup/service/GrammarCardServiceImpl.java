@@ -19,6 +19,8 @@ public class GrammarCardServiceImpl implements GrammarCardService {
     public GrammarCardDto addCard(GrammarCardDto grammarCardDto) {
         GrammarCard grammarCard = grammarCardMapper.toModel(grammarCardDto);
 
+        grammarCard.getContent().forEach(item -> item.setGrammarCard(grammarCard));
+
         grammarCardRepository.save(grammarCard);
         return grammarCardMapper.toDto(grammarCard);
     }
