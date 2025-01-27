@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-quiz-table
+      author: bodya4243
+      changes:
+        - createTable:
+            tableName: quiz
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: title
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: focus
+                  type: varchar(255)
+                  constraints:
+                    nullable: false

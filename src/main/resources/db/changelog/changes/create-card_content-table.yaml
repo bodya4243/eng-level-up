@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: "2"
+      author: "bodya4243"
+      changes:
+        - createTable:
+            tableName: card_content
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: "grammar_card_id"
+                  type: "BIGINT"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "title"
+                  type: "VARCHAR(255)"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "description"
+                  type: "VARCHAR(255)"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "content"
+                  type: "TEXT"
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: card_content
+            baseColumnNames: grammar_card_id
+            constraintName: FK_card_content_grammar_cards
+            referencedTableName: grammar_cards
+            referencedColumnNames: id
