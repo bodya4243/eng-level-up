@@ -33,9 +33,16 @@ public class ChatController {
             summary = "Get ChatGPT response",
             description = "Provide recommendations for grammar improvement in 5 sentences or fewer",
             parameters = {
-                    @Parameter(name = "prompt", description = "Main input for ChatGPT", required = true),
-                    @Parameter(name = "initialText", description = "Optional initial text context"),
-                    @Parameter(name = "requestMessage", description = "Additional message for context")
+                    @Parameter(
+                            name = "prompt",
+                            description = "Main input for ChatGPT",
+                            required = true),
+                    @Parameter(
+                            name = "initialText",
+                            description = "Optional initial text context"),
+                    @Parameter(
+                            name = "requestMessage",
+                            description = "Additional message for context")
             },
             responses = {
                     @ApiResponse(
