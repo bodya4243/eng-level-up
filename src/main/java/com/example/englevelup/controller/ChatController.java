@@ -10,12 +10,14 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+@PropertySource("classpath:application.properties")
 @RestController
 @RequestMapping("/chat")
 public class ChatController {
@@ -23,7 +25,7 @@ public class ChatController {
     @Value("${openai.model}")
     private String model;
 
-    @Value(("${openai.api.url}"))
+    @Value("${openai.api.url}")
     private String apiUrl;
 
     @Autowired
