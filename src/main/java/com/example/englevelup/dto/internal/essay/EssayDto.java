@@ -7,6 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class EssayDto {
+    private Long id;
     private EnglishLevel level;
     private String title;
 }

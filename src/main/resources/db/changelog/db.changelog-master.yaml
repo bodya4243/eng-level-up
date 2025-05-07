@@ -21,3 +21,8 @@ databaseChangeLog:
       file: db/changelog/changes/create-reading-table.yaml
   - include:
       file: db/changelog/changes/insert-roles.yaml
+  - include:
+      file: db/changelog/changes/insert-users.yaml
+  - include:
+      file: db/changelog/changes/insert-admin.yaml
+
