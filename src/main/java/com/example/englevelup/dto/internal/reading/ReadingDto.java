@@ -7,6 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ReadingDto {
+    private Long id;
     private String title;
     private String description;
     private String content;

@@ -9,6 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class GrammarCardDto {
+    private Long id;
     private EnglishLevel level;
     private String title;
     private String description;

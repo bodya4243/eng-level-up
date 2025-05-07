@@ -7,6 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ListeningDto {
+    private Long id;
     private String title;
     private String description;
     private EnglishLevel level;

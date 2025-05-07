@@ -8,6 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class QuizDto {
+    private Long id;
     private String title;
     private String focus;
     private List<Question> questions;

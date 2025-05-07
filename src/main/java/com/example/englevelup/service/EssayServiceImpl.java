@@ -6,7 +6,12 @@ import com.example.englevelup.model.EnglishLevel;
 import com.example.englevelup.model.writing.Essay;
 import com.example.englevelup.repository.EssayRepository;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
@@ -28,5 +33,36 @@ public class EssayServiceImpl implements EssayService {
         return essayRepository.findAllByLevel(englishLevel).stream()
                 .map(essayMapper::toDto)
                 .toList();
+    }
+
+    @Override
+    public List<EssayDto> updateById(List<EssayDto> dtos) {
+        List<Long> ids = dtos.stream().map(EssayDto::getId).toList();
+        List<Essay> essays = essayRepository.findAllById(ids);
+
+        Map<Long, EssayDto> dtoMap = dtos.stream()
+                .collect(Collectors.toMap(EssayDto::getId, Function.identity()));
+
+        for (Essay essay : essays) {
+            EssayDto currentDto = dtoMap.get(essay.getId());
+            essay.setLevel(currentDto.getLevel());
+            essay.setTitle(currentDto.getTitle());
+        }
+
+        essayRepository.saveAll(essays);
+
+        return essays.stream().map(essayMapper::toDto).toList();
+    }
+
+    @Override
+    public Page<EssayDto> getAllEssays(Pageable pageable) {
+        Page<Essay> essays = essayRepository.findAll(pageable);
+
+        return essays.map(essayMapper::toDto);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        essayRepository.deleteById(id);
     }
 }
